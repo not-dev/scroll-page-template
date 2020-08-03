@@ -1,20 +1,10 @@
-English / [日本語](./README_JP.md)
-
-<!-- ![](./res/) -->
-
 # react-template
 
 Template repository for React project.
 
-## Features
+## Demo
 
-Includes
-
-* Node.js
-* TypeScript
-* eslint
-* React
-* GitHub Actions
+<https://not-dev.github.io/scroll-page-template/>
 
 ## Installation
 
@@ -25,15 +15,13 @@ git clone https://github.com/not-dev/react-template.git
 ## Usage
 
 ```sh
-npm i -f
+npm i
 npm start
 ```
 
 ## License
 
-* Code: MIT License
-* Logos: CC BY-ND
-* This project includes open source software.
+MIT License
 
 ## How to make
 

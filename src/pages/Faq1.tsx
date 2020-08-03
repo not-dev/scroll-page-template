@@ -14,7 +14,8 @@ const Faq1 = () => {
         text: 'FAQ1',
         background: {
           image: 'https://source.unsplash.com/random'
-        }
+        },
+        contrast: true
       }}
       contents={
         [

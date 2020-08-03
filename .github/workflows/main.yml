@@ -23,15 +23,14 @@ jobs:
       - run: npm run build --if-present
         env:
           CI: true
-      - run: |
-          cp -r ./build/* ./docs
-      - uses: actions/create-release@latest
-        id: create_release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: mv build/ docs/
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add docs/
+          git commit -am "Auto deploy"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          # body: Update
-          "draft": false,
-          "prerelease": true
+          github_token: ${{ secrets.GITHUB_TOKEN }}

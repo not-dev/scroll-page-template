@@ -9,7 +9,7 @@ Template repository for React project.
 ## Installation
 
 ```sh
-git clone https://github.com/not-dev/react-template.git
+git clone https://github.com/not-dev/scroll-page-template.git
 ```
 
 ## Usage
@@ -22,17 +22,3 @@ npm start
 ## License
 
 MIT License
-
-## How to make
-
-```sh
-# create react app with typescript
-npx create-react-app [name] --typescript
-# eslintrc.yml
-npm i -D eslint
-npx eslint --init
----
-GitHub >> .git, LICENSE, README.md, .github/workflows/main.yml
-ADD >> .eslintignore, README_JP.md, res/
-EDIT >> eslintrc.yml, .gitignore, package.json, tsconfig.json
-```

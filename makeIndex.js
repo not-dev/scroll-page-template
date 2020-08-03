@@ -6,7 +6,8 @@ const targetDirs = [
   './src/molecules',
   './src/organisms',
   './src/pages',
-  './src/theme'
+  './src/theme',
+  './src/utils'
 ]
 
 // 拡張子
@@ -28,7 +29,7 @@ const makeIndexContent = (files) => {
   files.forEach((item) => {
     if (!excludes.includes(item)) {
       const file = item.split('.', 2)[0]
-      content += `export * from './${file}'`
+      content += `export * from './${file}'\n`
     }
   })
   return content

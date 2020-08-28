@@ -1,4 +1,4 @@
-export * from './CardPages'
-export * from './Fluid'
+export * from './Accordions'
+export * from './FAQ'
 export * from './Headline'
-export * from './Redirect'
+export * from './PR'

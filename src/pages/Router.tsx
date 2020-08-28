@@ -1,18 +1,24 @@
-import React from 'react'
-import { HashRouter, Route, Switch } from 'react-router-dom'
+import React, { lazy, Suspense } from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { Faq1, Faq2 } from '../pages'
+const Home = lazy(() => import('../wrap/pages/LazyHome'))
+const Page2 = lazy(() => import('../wrap/pages/LazyPage2'))
+const Blank = lazy(() => import('../wrap/pages/LazyBlank'))
+
+const base = (process.env.NODE_ENV !== 'development') ? window.location.pathname.split('/').slice(1, 2)[0] : ''
 
 const Router = () => {
   return (
-    <HashRouter>
-      <Switch>
-        <Route path='/' exact component={Faq2} />
-        <Route path='/1' component={Faq1} />
-        <Route path='/2' component={Faq2} />
-        <Route component={Faq2} />
-      </Switch>
-    </HashRouter>
+    // <HashRouter hashType='noslash'>
+    <BrowserRouter basename={base}>
+      <Suspense fallback={<></>}>
+        <Switch>
+          <Route path='/' component={Home} exact/>
+          <Route path='/page2' component={Page2} exact/>
+          <Route path='/blank' component={Blank} exact/>
+        </Switch>
+      </Suspense>
+    </BrowserRouter>
   )
 }
 

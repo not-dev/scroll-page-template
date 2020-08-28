@@ -1,6 +1,5 @@
 import { createMuiTheme, ThemeOptions } from '@material-ui/core'
 import { deepPurple, grey, lightBlue, lightGreen, lime, orange, red, teal } from '@material-ui/core/colors'
-import { fade } from '@material-ui/core/styles/colorManipulator'
 import { CSSProperties } from '@material-ui/core/styles/withStyles'
 
 import { shuffle } from '../utils'
@@ -9,20 +8,20 @@ const mColors = [teal[100], orange[100], deepPurple[100], lightGreen[100], lime[
 
 declare module '@material-ui/core/styles/createMuiTheme' {
   interface Theme {
-    colorSet: Array<string>,
+    randomColors: Array<string>,
+    bgColors: Array<string>,
     appbar: {
-      bgColor: CSSProperties['color'],
+      background: CSSProperties['background'],
       fontColor: CSSProperties['color'],
-      position: CSSProperties['position'],
       boxShadow: CSSProperties['boxShadow']
     }
   }
   interface ThemeOptions {
-    colorSet?: Array<string>,
+    randomColors?: Array<string>,
+    bgColors?: Array<string>,
     appbar?: {
-      bgColor?: CSSProperties['color'],
+      background?: CSSProperties['background'],
       fontColor?: CSSProperties['color'],
-      position?: CSSProperties['position'],
       boxShadow?: CSSProperties['boxShadow']
     }
   }
@@ -30,11 +29,11 @@ declare module '@material-ui/core/styles/createMuiTheme' {
 
 const createCustomTheme = (options: ThemeOptions) => {
   return createMuiTheme({
-    colorSet: shuffle(mColors),
+    randomColors: shuffle(mColors),
+    bgColors: [grey[50], grey[100]],
     appbar: {
-      bgColor: fade(teal[500], 0),
-      fontColor: grey[50],
-      position: 'absolute',
+      background: 'linear-gradient(rgba(0,0,0,0.04), rgba(0,0,0,0))',
+      fontColor: grey[900],
       boxShadow: 'none'
     },
     ...options
@@ -58,7 +57,7 @@ const mainTheme = createCustomTheme({
       secondary: grey[700] // 500
     },
     background: {
-      paper: grey[100], // 800
+      paper: grey[50], // 800
       default: grey[200] // A400
     },
     common: {
@@ -66,18 +65,55 @@ const mainTheme = createCustomTheme({
       white: grey[50]
     },
     action: {
-      hoverOpacity: 0.2
+      hoverOpacity: 0.08
     }
   },
   typography: {
-    button: {
-      textTransform: 'none'
-    },
     fontFamily: '"Roboto","BIZ UPDGothic",sans-serif',
     fontWeightLight: 400,
     fontWeightRegular: 400,
     fontWeightMedium: 500,
-    fontWeightBold: 500
+    fontWeightBold: 500,
+    h1: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    h2: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    h3: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    h4: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    h5: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    h6: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    subtitle1: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    subtitle2: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    body1: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    body2: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    button: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif',
+      textTransform: 'none'
+    },
+    caption: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    },
+    overline: {
+      fontFamily: '"Roboto","BIZ UPDGothic",sans-serif'
+    }
   },
   overrides: {
     MuiCssBaseline: {
@@ -95,7 +131,9 @@ const mainTheme = createCustomTheme({
           }
         },
         html: {
-          fontSize: 16
+          fontSize: 16,
+          overflowX: 'hidden',
+          width: '100%'
         },
         body: {
           textRendering: 'optimizeLegibility'

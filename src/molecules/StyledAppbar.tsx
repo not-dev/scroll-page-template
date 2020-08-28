@@ -1,64 +1,120 @@
-import { AppBar, AppBarProps, Button, Icon, Toolbar, Typography } from '@material-ui/core'
-import { styled, Theme } from '@material-ui/core/styles'
+import { AppBar, AppBarProps, Box, Button, Drawer, IconButton, ListItem, ListItemText, Toolbar, useMediaQuery } from '@material-ui/core'
+import { createStyles, makeStyles, styled, Theme, useTheme } from '@material-ui/core/styles'
+import MenuIcon from '@material-ui/icons/Menu'
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const SAppBar = styled(AppBar)(({ theme }:{theme:Theme}) => ({
-  position: theme.appbar.position,
-  backgroundColor: theme.appbar.bgColor,
-  boxShadow: theme.appbar.boxShadow,
-  color: theme.appbar.fontColor
-}))
+type StyledAppBarProps = AppBarProps & {
+  logo: React.ReactElement,
+  fontcolor?: string,
+  menu?: Array<{
+    children: string
+    [key:string] : any
+  }>
+}
 
-const Logo = styled(Icon)(({ theme }:{theme:Theme}) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginRight: theme.spacing(1),
-  padding: theme.spacing(1, 0),
-  width: 'auto',
-  ...theme.mixins.toolbar
-}))
-
-const TitleWrapper = styled('div')(() => ({
+const Wrapper = styled('div')(({ theme }: { theme: Theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-start',
-  cursor: 'pointer',
-  flex: 1
+  flex: 1,
+  [theme.breakpoints.down('xs')]: {
+    justifyContent: 'center'
+  }
 }))
 
-type SAppBarProps = AppBarProps & {
-  title?: string,
-  svg?: string
-}
+const LogoWrapper = styled('div')(({ theme, color }:{theme: Theme, color: StyledAppBarProps['fontcolor']}) => ({
+  fill: color || theme.appbar.fontColor,
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: 'auto',
+  height: 40,
+  [theme.breakpoints.down('xs')]: {
+    height: 36
+  }
+}))
 
-type StyledAppBarProps = SAppBarProps & {
-  hidden?: boolean
-}
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  root: (props: StyledAppBarProps) => ({
+    position: 'absolute',
+    background: theme.appbar.background,
+    boxShadow: theme.appbar.boxShadow,
+    color: props.fontcolor || theme.appbar.fontColor
+  }),
+  menu: {
+    position: 'absolute',
+    left: theme.spacing(1)
+  },
+  drawer: {
+    '& .MuiDrawer-paper': {
+      width: 240,
+      padding: theme.spacing(2, 0),
+      background: theme.palette.common.black,
+      color: theme.palette.common.white
+    }
+  },
+  drawerItem: {
+    marginLeft: theme.spacing(2)
+  }
+}))
 
 const StyledAppBar:React.FC<StyledAppBarProps> = (props) => {
   console.log('render Appbar')
+  const classes = useStyles(props)
+  const theme = useTheme()
+
+  const [open, setOpen] = React.useState(false)
 
   return (
-    <SAppBar position='relative'>
-      <Toolbar>
-        <TitleWrapper>
-          {props?.svg &&
-              <Logo>
-                <img src={props.svg} alt='' height='100%'/>
-              </Logo>
+    <React.Fragment>
+      <AppBar className={classes.root} position='relative' {...props}>
+        <Toolbar>
+          <Wrapper>
+            <Link to='/' aria-label='root'>
+              <LogoWrapper color={props.fontcolor}>
+                {props.logo}
+              </LogoWrapper>
+            </Link>
+          </Wrapper>
+          {
+            useMediaQuery(theme.breakpoints.up('sm'))
+              ? <Box display='flex' marginRight={2}>
+                {
+                  props.menu?.map(({ children, ...rest }) => {
+                    return (
+                      <Button color='inherit' size='large' {...rest} key={`menu-${children}`}>
+                        {children}
+                      </Button>
+                    )
+                  })
+                }
+              </Box>
+              : <React.Fragment>
+                <IconButton onClick={() => setOpen(!open)} color='inherit' className={classes.menu} >
+                  <MenuIcon/>
+                </IconButton>
+                <Drawer
+                  open={open}
+                  onClose={() => setOpen(false)}
+                  className={classes.drawer}
+                >
+                  {
+                    props.menu?.map(({ children, ...rest }) => {
+                      return (
+                        <ListItem button onClick={() => setOpen(false)} {...rest} key={`menu-${children}`}>
+                          <ListItemText className={classes.drawerItem}>{children}</ListItemText>
+                        </ListItem >
+                      )
+                    })
+                  }
+                </Drawer>
+              </React.Fragment>
           }
-          {props?.title &&
-              <Typography variant='h5'>
-                {props.title}
-              </Typography>
-          }
-        </TitleWrapper>
-        <Button color='inherit' size='large' component={Link} to='/1'>FAQ1</Button>
-        <Button color='inherit' size='large' component={Link} to='/2'>FAQ2</Button>
-      </Toolbar>
-    </SAppBar>
+        </Toolbar>
+      </AppBar>
+    </React.Fragment>
   )
 }
 

@@ -1,55 +1,11 @@
-import { Card, CardActionArea, CardContent, CardMedia, Grid, Grow, Typography } from '@material-ui/core'
-import { createStyles, makeStyles, styled, Theme } from '@material-ui/core/styles'
+import { Card, CardActionArea, CardContent, CardMedia, Grid, Grow, Typography, useMediaQuery } from '@material-ui/core'
+import { createStyles, makeStyles, styled, Theme, useTheme } from '@material-ui/core/styles'
 import React from 'react'
 
-import { Page, PageProps } from '../molecules'
-import { Fluid } from '../organisms'
-
-const SCard = styled(Card)(({ theme }:{theme:Theme}) => ({
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-  background: theme.palette.background.default
-}))
-
-const SCardMedia = styled(CardMedia)(({ theme }:{theme:Theme}) => ({
-  backgroundColor: theme.palette.background.default,
-  backgroundPosition: 'center',
-  backgroundSize: 'contain',
-  backgroundRepeat: 'no-repeat',
-  paddingTop: '56.25%' // 16:9
-}))
-
-const SCardContent = styled(CardContent)(({ theme }:{theme:Theme}) => ({
-  background: theme.palette.background.paper
-}))
-
-const Caption:React.FC = ({ children, ...props }) => {
-  const useStyles = makeStyles((theme: Theme) => createStyles({
-    typo: {
-      margin: theme.spacing(1, 0)
-    }
-  })
-  )
-  const classes = useStyles()
-  return (
-    <Typography className={classes.typo} variant='h6' align='center' {...props}>
-      {children}
-    </Typography>
-  )
-}
+import { ColumnPage, ColumnPageProps, Fluid } from '../molecules'
 
 type UUID = {
   uuid: string
-}
-
-type HeadlineOptionProps = {
-  background?: {
-    image?: string,
-    color?: string
-  },
-  fluid?: string|boolean,
-  contrast?: boolean
 }
 
 type CardProps = {
@@ -57,18 +13,42 @@ type CardProps = {
   image?: string
 }
 
-type HeadlineStaticProps = PageProps & HeadlineOptionProps
+type HeadlineStaticProps = ColumnPageProps & {
+  bgcolor?: string
+  fluid?: string|boolean
+}
 
 type HeadlineProps = HeadlineStaticProps & {
   cards: Array<UUID & CardProps>,
   onClickCard: (target:string) => void
 }
 
+const Caption:React.FC = ({ children }) => {
+  const useStyles = makeStyles((theme: Theme) => createStyles({
+    typo: {
+      margin: theme.spacing(1, 0),
+      [theme.breakpoints.down('xs')]: {
+        margin: theme.spacing(0),
+        ...theme.typography.subtitle1
+      }
+    }
+  }))
+
+  const classes = useStyles()
+
+  return (
+    <Typography className={classes.typo} variant='h6' align='center' noWrap component='h2' >
+      {children}
+    </Typography>
+  )
+}
+
 const Wrapper = styled('div')(() => ({
   position: 'relative'
 }))
 
-const Layer = styled('div')(() => ({
+const BgLayer = styled('div')(({ theme, bgcolor }:{theme:Theme, bgcolor?: string}) => ({
+  backgroundColor: bgcolor || theme.palette.background.default,
   position: 'absolute',
   zIndex: -1,
   top: 0,
@@ -77,52 +57,64 @@ const Layer = styled('div')(() => ({
   right: 0
 }))
 
-const BgLayer = styled(Layer)(({ theme, background }:{theme:Theme, background?: HeadlineStaticProps['background']}) => ({
-  backgroundColor: background?.color || theme.palette.background.default,
-  backgroundImage: `url(${background?.image})`,
-  backgroundPosition: 'center',
-  backgroundSize: 'cover',
-  backgroundRepeat: 'no-repeat'
-}))
-
-const Overlay = styled(Layer)(() => ({
-  backgroundColor: 'rgba(0,0,0,0.5)',
-  backdropFilter: 'blur(1px)'
+const useStyles = makeStyles((theme: Theme) => createStyles({
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    background: theme.palette.background.default
+  },
+  cardContent: {
+    background: theme.palette.background.paper
+  },
+  cardMedia: {
+    backgroundColor: theme.palette.background.default,
+    backgroundPosition: 'center',
+    backgroundSize: 'auto 66%',
+    backgroundRepeat: 'no-repeat',
+    paddingTop: '56.25%', // 16:9
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: 0
+    }
+  }
 }))
 
 const Headline:React.FC<HeadlineProps> = (props) => {
+  const classes = useStyles()
+  const theme = useTheme()
+
   return (
     <Wrapper>
-      <BgLayer background={props.background}/>
+      <BgLayer bgcolor={props.bgcolor}/>
       {props.fluid && <Fluid color={typeof props.fluid === 'string' ? props.fluid : undefined}/>}
-      {props.background?.image && <Overlay/>}
-      <Page text={props.text} color={props.color} contrast={props.contrast}>
-        <Grid container spacing={4}>
+      <ColumnPage text={props.text} color={props.color}>
+        <Grid container spacing={useMediaQuery(theme.breakpoints.up('sm')) ? 4 : 2}>
           {
             props.cards.map((card, i) => {
-              console.log('Accordion map')
+              console.log('card map')
               return (
                 <Grid item xs={12} sm={6} md={4} key={`card-${card.uuid}`} >
                   <Grow in timeout={300 * i} >
-                    <SCard>
+                    <Card className={classes.card}>
                       <CardActionArea onClick={() => props.onClickCard(card.uuid)}>
-                        <SCardMedia
-                          image={card.image || 'https://unsplash.it/480/270?random/' + i}
+                        <CardMedia
+                          className={classes.cardMedia}
+                          image={card.image || 'https://source.unsplash.com/random/' + i}
                         />
-                        <SCardContent>
+                        <CardContent className={classes.cardContent}>
                           <Caption>
                             {card.subtitle}
                           </Caption>
-                        </SCardContent>
+                        </CardContent>
                       </CardActionArea>
-                    </SCard>
+                    </Card>
                   </Grow>
                 </Grid>
               )
             })
           }
         </Grid>
-      </Page>
+      </ColumnPage>
     </Wrapper>
   )
 }

@@ -1,3 +1,5 @@
-export * from './Faq1'
-export * from './Faq2'
+export * from './appbarProps'
+export * from './Blank'
+export * from './Home'
+export * from './Page2'
 export * from './Router'

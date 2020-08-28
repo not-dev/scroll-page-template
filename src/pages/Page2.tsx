@@ -10,7 +10,7 @@ import mouth from '../assets/icon/pest_control_rodent.svg'
 import apps from '../assets/icon/touch_app.svg'
 import logo from '../assets/image/react.svg'
 import { Gallery, Youtube } from '../molecules'
-import { FAQ } from '../organisms'
+import { Content } from '../organisms'
 import { appbarProps } from '../pages'
 
 const Page2 = () => {
@@ -20,7 +20,7 @@ const Page2 = () => {
         <title>SPA</title>
         <meta name='description' content='React SPA template' />
       </Helmet>
-      <FAQ
+      <Content
         appbar={{
           ...appbarProps,
           fontcolor: grey[50]

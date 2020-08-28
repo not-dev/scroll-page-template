@@ -12,7 +12,7 @@ type Content = CardProps & {
   items: Array<AccordionItemProps>
 }
 
-type FAQProps = {
+type ContentProps = {
   appbar: StyledAppBarProps,
   headline: HeadlineStaticProps,
   contents: Array<Content>
@@ -27,8 +27,8 @@ const handleClickCard = (target:string) => {
   scroller.scrollTo(target, scrollProps)
 }
 
-const FAQ:React.FC<FAQProps> = (props) => {
-  console.log('render FAQ')
+const Content:React.FC<ContentProps> = (props) => {
+  console.log('render Content')
 
   const contents = React.useMemo(() => {
     return (
@@ -55,7 +55,7 @@ const FAQ:React.FC<FAQProps> = (props) => {
     return (
       contents.map((content, i) => {
         const ContentsBody = (
-          <Element name={content.uuid} key={`faq-p-${content.uuid}`} >
+          <Element name={content.uuid} key={`Content-p-${content.uuid}`} >
             <ColumnPage text={content.subtitle}>
               <Accordions items={content.items}/>
             </ColumnPage>
@@ -88,4 +88,4 @@ const FAQ:React.FC<FAQProps> = (props) => {
   )
 }
 
-export { FAQ }
+export { Content }

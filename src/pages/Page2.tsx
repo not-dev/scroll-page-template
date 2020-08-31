@@ -33,11 +33,18 @@ const Page2 = () => {
         contents={
           [
             {
-              subtitle: 'hoge',
+              subtitle: 'フラッグ',
               image: flag,
               items: [
                 {
-                  summary: 'hoge',
+                  summary: 'コンテンツ',
+                  details: [
+                    'foo',
+                    'foo'
+                  ]
+                },
+                {
+                  summary: 'コンテンツ2',
                   details: [
                     'hoge',
                     'hoge'
@@ -45,145 +52,45 @@ const Page2 = () => {
                   images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
                 },
                 {
-                  summary: 'foo',
+                  summary: 'コンテンツ3',
                   details: [
                     'foo',
                     'foo'
                   ],
-                  images: <Gallery items={[logo]}/>
-                },
-                {
-                  summary: 'hoge',
-                  details: [
-                    'hoge',
-                    'hoge'
-                  ],
-                  images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
+                  images: <Gallery items={[logo, logo, logo]}/>
                 }
               ]
             },
             {
-              subtitle: 'hoge',
+              subtitle: '電球',
               image: light,
               items: [
-                {
-                  summary: 'hoge',
-                  details: [
-                    'hoge',
-                    'hoge'
-                  ],
-                  images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
-                },
-                {
-                  summary: 'foo',
-                  details: [
-                    'foo',
-                    'foo'
-                  ],
-                  images: <Gallery items={[logo]}/>
-                },
-                {
-                  summary: 'hoge',
-                  details: [
-                    'hoge',
-                    'hoge'
-                  ],
-                  images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
-                }
+
               ]
             },
             {
-              subtitle: 'hoge',
+              subtitle: 'ヘルプ',
               image: help,
               items: [
-                {
-                  summary: 'hoge',
-                  details: [
-                    'hoge',
-                    'hoge'
-                  ],
-                  images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
-                },
-                {
-                  summary: 'foo',
-                  details: [
-                    'foo',
-                    'foo'
-                  ],
-                  images: <Gallery items={[logo]}/>
-                },
-                {
-                  summary: 'hoge',
-                  details: [
-                    'hoge',
-                    'hoge'
-                  ],
-                  images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
-                }
+
               ]
             },
             {
-              subtitle: 'hoge',
+              subtitle: 'チャート',
               image: chart,
               items: [
-                {
-                  summary: 'hoge',
-                  details: [
-                    'hoge',
-                    'hoge'
-                  ],
-                  images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
-                },
-                {
-                  summary: 'foo',
-                  details: [
-                    'foo',
-                    'foo'
-                  ],
-                  images: <Gallery items={[logo]}/>
-                },
-                {
-                  summary: 'hoge',
-                  details: [
-                    'hoge',
-                    'hoge'
-                  ],
-                  images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
-                }
+
               ]
             },
             {
-              subtitle: 'hoge',
+              subtitle: 'タッチ',
               image: apps,
               items: [
-                {
-                  summary: 'hoge',
-                  details: [
-                    'hoge',
-                    'hoge'
-                  ],
-                  images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
-                },
-                {
-                  summary: 'foo',
-                  details: [
-                    'foo',
-                    'foo'
-                  ],
-                  images: <Gallery items={[logo]}/>
-                },
-                {
-                  summary: 'hoge',
-                  details: [
-                    'hoge',
-                    'hoge'
-                  ],
-                  images: <Youtube url='https://youtu.be/oUFJJNQGwhk'/>
-                }
+
               ]
             },
             {
-              subtitle: 'COMING SOON...',
+              subtitle: 'マウス',
               image: mouth,
               items: [
 

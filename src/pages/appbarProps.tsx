@@ -20,7 +20,7 @@ const appbarProps:StyledAppBarProps = {
     {
       component: Link,
       to: '/blank',
-      children: 'NEXT'
+      children: 'BLANK'
     }
   ]
 }

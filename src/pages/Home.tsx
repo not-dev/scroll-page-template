@@ -2,10 +2,10 @@ import { useTheme } from '@material-ui/core/styles'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
+import logo from '../assets/image/brush.svg'
 import mockup1 from '../assets/image/mockup1.png'
 import mockup2 from '../assets/image/mockup2.png'
 import mockup3 from '../assets/image/mockup3.png'
-import logo from '../assets/image/react.svg'
 import thumbnail from '../assets/image/thumbnail.png'
 import { Gallery, Youtube } from '../molecules'
 import { PR } from '../organisms'
@@ -28,26 +28,22 @@ const Home = () => {
         contents={
           [
             {
-              subtitle: 'Title',
-              body: `hoge
-                hoge
-              `,
+              subtitle: 'SPAのテンプレート',
+              body: 'React + Material-UI',
               image: <Gallery items={[mockup1, mockup2, mockup3]} showBullets={false} showNav={false} autoPlay onClick={(e:any) => { e.stopPropagation() }}/>
             },
             {
-              subtitle: 'Title',
-              body: `hoge
-                hoge
+              subtitle: '適当な画像',
+              body: `すごく大きなブラシ
+              very big brush
               `,
               reverse: true,
               split: [6, 6],
               image: <img src={logo} height='auto' width='100%' alt=''/>
             },
             {
-              subtitle: 'Title',
-              body: `hoge
-                hoge
-              `,
+              subtitle: '適当な動画',
+              body: 'YouTubeの動画です',
               image: <Youtube url='https://youtu.be/oUFJJNQGwhk' light={thumbnail}/>
             }
           ]

@@ -14,6 +14,7 @@ type GalleryProps = {
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
+    width: '100%',
     '& img.image-gallery-image': {
       outline: 'none'
     },

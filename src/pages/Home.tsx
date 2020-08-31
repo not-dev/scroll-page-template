@@ -2,11 +2,11 @@ import { useTheme } from '@material-ui/core/styles'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import logo from '../assets/image/brush.svg'
+import image from '../assets/image/brush.svg'
 import mockup1 from '../assets/image/mockup1.png'
 import mockup2 from '../assets/image/mockup2.png'
 import mockup3 from '../assets/image/mockup3.png'
-import thumbnail from '../assets/image/thumbnail.png'
+import thumbnail from '../assets/image/thumbnail.svg'
 import { Gallery, Youtube } from '../molecules'
 import { PR } from '../organisms'
 import { appbarProps } from '../pages'
@@ -39,7 +39,7 @@ const Home = () => {
               `,
               reverse: true,
               split: [6, 6],
-              image: <img src={logo} height='auto' width='100%' alt=''/>
+              image: <img src={image} height='auto' width='100%' alt=''/>
             },
             {
               subtitle: '適当な動画',

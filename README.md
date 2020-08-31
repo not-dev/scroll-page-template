@@ -4,12 +4,12 @@ Template repository for React project.
 
 ## Demo
 
-<https://not-dev.github.io/scroll-page-template/>
+<https://not-dev.github.io/spa-template/>
 
 ## Installation
 
 ```sh
-git clone https://github.com/not-dev/scroll-page-template.git
+git clone https://github.com/not-dev/spa-template.git
 ```
 
 ## Usage

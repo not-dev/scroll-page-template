@@ -1,0 +1,2 @@
+(this["webpackJsonpspa-template"]=this["webpackJsonpspa-template"]||[]).push([[5],{242:function(t,e,p){"use strict";p.r(e);var s=p(95);p.d(e,"default",(function(){return s.c}))}}]);
+//# sourceMappingURL=5.ae7408dc.chunk.js.map

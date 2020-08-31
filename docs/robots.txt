@@ -1,0 +1,3 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Sitemap: https://not-dev.github.io/spa-template/sitemap.xml

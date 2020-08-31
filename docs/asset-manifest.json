@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.js": "./static/js/main.68f6c912.chunk.js",
+    "main.js.map": "./static/js/main.68f6c912.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.8bb5fe93.js",
+    "runtime-main.js.map": "./static/js/runtime-main.8bb5fe93.js.map",
+    "static/css/2.8730d5d4.chunk.css": "./static/css/2.8730d5d4.chunk.css",
+    "static/js/2.53c30e5a.chunk.js": "./static/js/2.53c30e5a.chunk.js",
+    "static/js/2.53c30e5a.chunk.js.map": "./static/js/2.53c30e5a.chunk.js.map",
+    "static/js/3.f5b02490.chunk.js": "./static/js/3.f5b02490.chunk.js",
+    "static/js/3.f5b02490.chunk.js.map": "./static/js/3.f5b02490.chunk.js.map",
+    "static/js/4.25ae691c.chunk.js": "./static/js/4.25ae691c.chunk.js",
+    "static/js/4.25ae691c.chunk.js.map": "./static/js/4.25ae691c.chunk.js.map",
+    "static/js/5.ae7408dc.chunk.js": "./static/js/5.ae7408dc.chunk.js",
+    "static/js/5.ae7408dc.chunk.js.map": "./static/js/5.ae7408dc.chunk.js.map",
+    "index.html": "./index.html",
+    "precache-manifest.0b449aa866adae7a5397a6c129b400fa.js": "./precache-manifest.0b449aa866adae7a5397a6c129b400fa.js",
+    "service-worker.js": "./service-worker.js",
+    "static/css/2.8730d5d4.chunk.css.map": "./static/css/2.8730d5d4.chunk.css.map",
+    "static/js/2.53c30e5a.chunk.js.LICENSE.txt": "./static/js/2.53c30e5a.chunk.js.LICENSE.txt",
+    "static/media/brush.svg": "./static/media/brush.e7671d50.svg",
+    "static/media/emoji_objects.svg": "./static/media/emoji_objects.17698aeb.svg",
+    "static/media/help.svg": "./static/media/help.4a4bbdc1.svg",
+    "static/media/insert_chart.svg": "./static/media/insert_chart.65978898.svg",
+    "static/media/mockup1.png": "./static/media/mockup1.b6730ced.png",
+    "static/media/mockup2.png": "./static/media/mockup2.33103f8e.png",
+    "static/media/mockup3.png": "./static/media/mockup3.8d1c72f1.png",
+    "static/media/outlined_flag.svg": "./static/media/outlined_flag.410e6353.svg",
+    "static/media/pest_control_rodent.svg": "./static/media/pest_control_rodent.7f1d5812.svg",
+    "static/media/react.svg": "./static/media/react.aade77b8.svg",
+    "static/media/thumbnail.png": "./static/media/thumbnail.861cfc27.png",
+    "static/media/touch_app.svg": "./static/media/touch_app.ca88a25d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8bb5fe93.js",
+    "static/css/2.8730d5d4.chunk.css",
+    "static/js/2.53c30e5a.chunk.js",
+    "static/js/main.68f6c912.chunk.js"
+  ]
+}

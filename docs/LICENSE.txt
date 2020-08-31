@@ -1,0 +1,21 @@
+This project is using open source software.
+
+MIT LICENSE | https://opensource.org/licenses/MIT
+
+* material-ui
+* react
+* react-helmet
+* react-image-gallery
+* react-lazyload
+* react-player
+* react-router-dom
+* react-scroll
+* uuid
+
+Apache License, Version 2.0 | http://www.apache.org/licenses/LICENSE-2.0
+
+* material-design-icons
+
+SIL Open Font License | https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
+
+* Comfortaa
